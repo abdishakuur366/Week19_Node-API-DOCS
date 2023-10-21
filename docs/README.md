@@ -3,6 +3,76 @@
 Here's the updated documentation for the Author API routes:
 - **MainRoute**: `api/owners/`
 
+## Owner API Documentation
+
+This documentation provides details about the API endpoints for managing owners.
+
+### Owner Sign Up
+
+```
+POST /signup
+```
+
+Sign up a new owner.
+
+#### Request Body
+
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "password123"
+}
+```
+
+#### Response
+
+- `201 Created` on success
+
+```json
+{
+  "message": "Owner created successfully",
+  "owner": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+  }
+}
+```
+
+Note: If the owner already exists, a `409 Conflict` response will be returned.
+
+### Owner Login
+
+```
+POST /login
+```
+
+Log in an owner.
+
+#### Request Body
+
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "password123"
+}
+```
+
+#### Response
+
+- `200 OK` on success
+
+```json
+{
+  "message": "Owner logged in successfully",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjM0MjY0Mzg1LCJleHAiOjE2MzQyNjgxODV9.RCJpS5oVWxQ5w3LmJd1P0iLq5zW0B7rV0WUVvVH3jwY"
+}
+```
+
+Note: If the owner is not found or the credentials are invalid, a `404 Not Found` or `401 Unauthorized` response will be returned, respectively.
+
+Please note that the actual token value will be different in each response.
 
 ## Get All Authors
 
